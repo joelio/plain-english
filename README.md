@@ -1,6 +1,12 @@
-# Plain English & British English — Claude Code Skills
+<p align="center">
+  <img src="logo.svg" alt="Plain English" width="400">
+</p>
 
-Two [Claude Code skills](https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/overview) that help Claude write clearly and consistently.
+# Plain English — Claude Code Writing Skills
+
+Three [Claude Code skills](https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/overview) that help Claude write clearly, consistently, and naturally.
+
+They stack together: **plain-english** for clarity, **british-english** for consistency, and **natural-writing** to strip out the AI slop.
 
 ## Skills
 
@@ -26,6 +32,16 @@ Based on guidance from:
 - Fowler's Modern English Usage
 - GOV.UK Style Guide
 
+### `natural-writing`
+
+Removes AI writing patterns that make text sound machine-generated. Covers em dash elimination, banned words (delve, leverage, robust, crucial, and 30+ more), banned phrases ("In today's fast-paced world", "It's worth noting", "Great question!"), structural de-AIification (no bold-colon-explanation bullets, no sycophantic openings, no formulaic enumeration), and tone rules (have an opinion, be specific, vary rhythm).
+
+Based on research from:
+- [Max Planck Institute study on AI word frequency](https://futurism.com/the-byte/ai-overuses-specific-words) (2025)
+- Community consensus from writing and copywriting forums
+- [Blake Stockton's Red Flag Words analysis](https://www.blakestockton.com/red-flag-words/)
+- [Plagiarism Today's em dash analysis](https://www.plagiarismtoday.com/2025/06/26/em-dashes-hyphens-and-spotting-ai-writing/)
+
 ## Installation
 
 Copy the skill directories into your Claude Code skills folder:
@@ -34,16 +50,19 @@ Copy the skill directories into your Claude Code skills folder:
 # Clone
 git clone https://github.com/joelio/plain-english.git
 
-# Copy skills to your Claude Code skills directory
+# Copy all skills
 cp -r plain-english/skills/plain-english ~/.claude/skills/
 cp -r plain-english/skills/british-english ~/.claude/skills/
+cp -r plain-english/skills/natural-writing ~/.claude/skills/
 ```
 
 Or symlink them:
 
 ```bash
-ln -s "$(pwd)/plain-english/skills/plain-english" ~/.claude/skills/plain-english
-ln -s "$(pwd)/plain-english/skills/british-english" ~/.claude/skills/british-english
+cd plain-english
+for skill in skills/*/; do
+  ln -s "$(pwd)/$skill" ~/.claude/skills/"$(basename $skill)"
+done
 ```
 
 ## Usage
@@ -52,12 +71,14 @@ Once installed, Claude Code will automatically discover and use these skills whe
 
 - **plain-english** triggers when writing or editing prose, documentation, policies, or user-facing content
 - **british-english** triggers when writing for British audiences, UK organisations, or when British English is requested
+- **natural-writing** triggers when writing any content that should sound human-written, or when asked to remove AI-sounding language
 
 You can also invoke them explicitly:
 
 ```
 /plain-english
 /british-english
+/natural-writing
 ```
 
 ## Testing
@@ -68,7 +89,7 @@ Run manually by providing the test prompts to a Claude Code session with the ski
 
 ## Research
 
-The word lists, rules, and conventions in these skills were synthesised from research across 11 LLMs (via [Parliament of Owls](https://github.com/joelio/owl)) plus direct consultation of the GOV.UK Content Design Guide, Oxford International English spelling guides, and the Plain English Campaign's published materials.
+The word lists, rules, and conventions in these skills were synthesised from research across 11 LLMs (via [Parliament of Owls](https://github.com/joelio/owl)) plus direct consultation of the GOV.UK Content Design Guide, Oxford International English spelling guides, the Plain English Campaign's published materials, and AI writing pattern research.
 
 ## Licence
 

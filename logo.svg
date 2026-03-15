@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <defs>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        .bg { fill: transparent; }
+        .text-main { fill: #F5F0E8; }
+        .text-sub { fill: #B8B0A0; }
+        .quill { fill: #F5F0E8; }
+        .accent { fill: #C8102E; }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" width="200" height="60" fill="transparent" rx="4"/>
+
+  <!-- Quill nib icon -->
+  <g transform="translate(10, 8)">
+    <!-- Quill body - elegant curved shape -->
+    <path class="quill" d="M8 42 L12 18 Q14 10 20 6 Q28 1 36 4 Q30 8 26 14 Q22 20 20 28 L16 38 Z"
+          fill="#1B2A4A" stroke="none"/>
+    <!-- Nib tip -->
+    <path class="accent" d="M8 42 L12 38 L10 44 Z" fill="#C8102E"/>
+    <!-- Ink line -->
+    <line x1="10" y1="44" x2="34" y2="44" stroke="#1B2A4A" stroke-width="1.5" stroke-linecap="round" class="quill"/>
+  </g>
+
+  <!-- Text: "Plain English" -->
+  <text x="52" y="30" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="bold" letter-spacing="0.5" class="text-main" fill="#1B2A4A">Plain English</text>
+
+  <!-- Subtitle -->
+  <text x="52" y="45" font-family="system-ui, -apple-system, Helvetica, Arial, sans-serif" font-size="7.5" letter-spacing="1.5" class="text-sub" fill="#6B7B8D">WRITING SKILLS FOR CLAUDE</text>
+</svg>
